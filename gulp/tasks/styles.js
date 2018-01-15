@@ -1,21 +1,18 @@
 var gulp = require('gulp'),
-    postcss = require('gulp-postcss'), // post css
-    autoprefixer = require('autoprefixer'), // automatic css vendor prefixes
-    cssVars = require('postcss-simple-vars'), // css $variables
-    cssNested = require('postcss-nested'), // css nested selectors
-    cssImport = require('postcss-import'), // css @import
-    cssMixins = require('postcss-mixins'); // css @mixins
+postcss = require('gulp-postcss'),
+autoprefixer = require('autoprefixer'),
+cssvars = require('postcss-simple-vars'),
+nested = require('postcss-nested'),
+cssImport = require('postcss-import'),
+mixins = require('postcss-mixins'),
+hexrgba = require('postcss-hexrgba');
 
 gulp.task('styles', function() {
-  //async functions must use return statement
-  return gulp.src('./app/assets/styles/styles.css') //main file with all @import
-    //array of packages, ORDER MATTERS
-    .pipe(postcss([cssImport, cssMixins, cssVars, cssNested, autoprefixer]))
-    //handles error gracefully and prevents "watch" task to stop
-    .on('error', function(err) {
-      console.log(err.toString()); // print error in readable format
-      this.emit('end'); // end task, but keeps "watch" task going
+  return gulp.src('./app/assets/styles/styles.css')
+    .pipe(postcss([cssImport, mixins, cssvars, nested, hexrgba, autoprefixer]))
+    .on('error', function(errorInfo) {
+      console.log(errorInfo.toString());
+      this.emit('end');
     })
-     // put everything in named folder, file name is same as src
     .pipe(gulp.dest('./app/temp/styles'));
 });
