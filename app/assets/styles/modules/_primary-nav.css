@@ -3,8 +3,10 @@
 
   @mixin atMedium {
     padding-top: 0;
+  }
 
-    &--pull-right {
+  &--pull-right {
+    @mixin atMedium {
       float: right;
     }
   }
@@ -18,9 +20,9 @@
   li {
     list-style: none;
     display: inline-block;
-    padding-right: 10px;
-
+    padding-right: 7px;
     @mixin atMedium {
+      padding-right: 20px;
       float: left;
       display: block;
     }
@@ -28,7 +30,6 @@
 
   li:last-child {
     padding-right: 0;
-
     @mixin atMedium {
       padding-right: 20px;
     }
@@ -36,8 +37,8 @@
 
   a {
     color: #FFF;
-    text-decoration: none;
     font-weight: 300;
+    text-decoration: none;
     display: block;
     padding: 5px 8px;
     font-size: .8rem;

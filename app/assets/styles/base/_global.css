@@ -1,7 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
-  width: 100%;
 }
 
 img {
@@ -9,11 +8,10 @@ img {
   height: auto;
 }
 
-a {
-  color: $mainOrange;
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
+}
+
+a {
+  color: $mainOrange;
 }
